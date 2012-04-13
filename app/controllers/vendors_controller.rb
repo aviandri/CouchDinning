@@ -6,7 +6,10 @@ class VendorsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @vendors }
+      # format.json { render json: @vendors }
+      format.json { 
+        @vendors
+      }
     end
   end
 

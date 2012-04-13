@@ -69,6 +69,9 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.3)
+    rabl (0.6.8)
+      activesupport (>= 2.3.14)
+      multi_json (~> 1.0)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -115,6 +118,7 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.1)
       rack (>= 1.0)
+    yajl-ruby (1.1.0)
 
 PLATFORMS
   ruby
@@ -125,7 +129,9 @@ DEPENDENCIES
   jquery-rails
   mysql2
   paperclip (~> 3.0)
+  rabl
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  yajl-ruby
