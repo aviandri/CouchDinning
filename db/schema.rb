@@ -11,31 +11,34 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120413182440) do
+ActiveRecord::Schema.define(:version => 20120414100818) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.float    "price"
-    t.string   "avatar"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.text     "vendor_id",   :limit => 16777215
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.integer  "vendor_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "order_items", :force => true do |t|
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.text     "order_id",   :limit => 16777215
-    t.text     "item_id",    :limit => 16777215
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "order_id"
+    t.integer  "item_id"
   end
 
   create_table "orders", :force => true do |t|
     t.datetime "date"
     t.float    "total_price"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.text     "user_id",     :limit => 16777215
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

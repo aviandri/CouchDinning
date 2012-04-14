@@ -2,11 +2,12 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.where(:vendor_id => params[:vendor_id].to_i)
+    p @items
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @items }
+      format.json
     end
   end
 
@@ -17,7 +18,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @item }
+      format.json
     end
   end
 
@@ -41,10 +42,12 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(params[:item])
-
+    
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
+        format.html { 
+          redirect_to vendor_item_path(@item.vendor_id, @item.id)
+        }
         format.json { render json: @item, status: :created, location: @item }
       else
         format.html { render action: "new" }

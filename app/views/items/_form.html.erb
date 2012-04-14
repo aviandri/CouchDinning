@@ -1,4 +1,4 @@
-<%= form_for(@item) do |f| %>
+<%= form_for @item, :html => { :multipart => true } do |f| %>
   <% if @item.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
@@ -25,11 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :avatar %><br />
-    <%= f.text_field :avatar %>
+    <%= file_field(:item, :avatar) %>
   </div>
   <div class="field">
     <%= f.label :vendor_id %><br />
-    <%= select("item", "vendor_id", Vendor.all.collect {|p| [ p.name ] }) %>
+    <%= select("item", "vendor_id", Vendor.all.collect {|p| [ p.name, p.id ] }) %>
   </div>
   <div class="actions">
     <%= f.submit %>

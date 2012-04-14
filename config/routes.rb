@@ -3,10 +3,13 @@ CouchDinning::Application.routes.draw do
 
   devise_for :users
 
-  resources :items
+  resources :items, :only => [:new, :create, :edit, :update]
 
-  resources :vendors
-
+  resources :vendors do 
+    resources :items, :only => [:index, :show, :destroy]
+  end
+  
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
