@@ -41,4 +41,4 @@ gem 'mysql2'
 gem 'devise'
 gem "paperclip", "~> 3.0"
 gem 'rabl'
-gem 'yajl-ruby'
+gem 'yajl-ruby', require: 'yajl'
