@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120414100818) do
+ActiveRecord::Schema.define(:version => 20120417063927) do
 
   create_table "items", :force => true do |t|
     t.string   "name"
@@ -67,12 +67,16 @@ ActiveRecord::Schema.define(:version => 20120414100818) do
   create_table "vendors", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
+    t.string   "logo_image_file_name"
+    t.string   "logo_image_content_type"
+    t.integer  "logo_image_file_size"
+    t.datetime "logo_image_updated_at"
+    t.string   "dashboard_image_file_name"
+    t.string   "dashboard_image_content_type"
+    t.integer  "dashboard_image_file_size"
+    t.datetime "dashboard_image_updated_at"
   end
 
 end

@@ -10,7 +10,6 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :name %><br />
     <%= f.text_field :name %>
@@ -20,8 +19,12 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :avatar %><br />
-    <%= file_field(:vendor, :avatar) %>
+    <%= f.label :logo %><br />
+    <%= file_field(:vendor, :logo_image) %>
+  </div>
+  <div class="field">
+    <%= f.label :dashboard %><br />
+    <%= file_field(:vendor, :dashboard_image) %>
   </div>
   <div class="actions">
     <%= f.submit %>
