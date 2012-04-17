@@ -16,4 +16,8 @@ class ApplicationController < ActionController::Base
     @parsed_body ||= parse_body      
   end
   
+  def force_json_request
+    request.format = :json
+  end
+  
 end
