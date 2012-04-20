@@ -20,4 +20,8 @@ class ApplicationController < ActionController::Base
     request.format = :json
   end
   
+  def render_error(msg, status)
+    render(:json => {:message => msg}, :status => status) and return
+  end
+  
 end

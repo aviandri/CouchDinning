@@ -1,7 +1,6 @@
 class VendorsController < ApplicationController
   # GET /vendors
   # GET /vendors.json
-#  before_filter :authenticate_user!, :only => [:index]
   def index
     @vendors = Vendor.all
 

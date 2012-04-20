@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyText
+  building_type: MyText
+  phone_number: 1
+  additional_detail: MyText
+
+two:
+  name: MyText
+  building_type: MyText
+  phone_number: 1
+  additional_detail: MyText
