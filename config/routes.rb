@@ -2,7 +2,7 @@ CouchDinning::Application.routes.draw do
   resources :orders
 
   devise_for :users, :controller => {:registration => "api/users"} do
-    post '/users', :to => 'api/users#create'
+    post '/api/users', :to => 'api/users#create'
   end
 
   resources :items, :only => [:new, :create, :edit, :update]
