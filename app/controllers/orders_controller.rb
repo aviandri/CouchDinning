@@ -42,23 +42,12 @@ class OrdersController < ApplicationController
   def create
     p = params[:order]
     item_ids = params[:item_ids]
-    if item_ids
-      item_ids = @item_ids.split(",")
-      items = []
-      item_ids.each do |id|
-        items = Item.find(id)
-      end
-      p["items"] = items
-    end
-    @order = Order.new(p)
-
+    @order = OrderService.create(p, item_ids)
     respond_to do |format|
-      if @order.save
+      if @order.valid?
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
-        format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render action: "new" }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
       end
     end
   end

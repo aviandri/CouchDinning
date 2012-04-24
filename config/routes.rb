@@ -1,5 +1,4 @@
 CouchDinning::Application.routes.draw do
-  resources :orders
 
   devise_for :users, :controller => {:registration => "api/users"} do
     post '/api/users', :to => 'api/users#create'
@@ -18,6 +17,8 @@ CouchDinning::Application.routes.draw do
       resources :items, :only => [:index, :show]
     end
     resources :addresses, :only => [:create, :index, :show]
+    
+    resources :orders, :only => [:create]
     
   end
   

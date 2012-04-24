@@ -1,5 +1,6 @@
 class Api::AddressesController < ApplicationController
   before_filter :authenticate_user!
+  before_filter :force_json_request
   
   def create
     @address = Address.new(parsed_body)
