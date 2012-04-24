@@ -12,5 +12,12 @@ class Api::AddressesController < ApplicationController
   
   def show
     @address = Address.find(params[:id])
+    unless @address.user.id == current_user.id
+      raise CustomException::AccessDenied
+    end
+  end
+  
+  def index
+    @addresses = Address.where(:user_id => current_user.id)
   end
 end

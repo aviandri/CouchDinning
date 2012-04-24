@@ -17,11 +17,10 @@ CouchDinning::Application.routes.draw do
     resources :vendors, :only => [:index, :show] do
       resources :items, :only => [:index, :show]
     end
-    resources :addresses, :only => [:create]
+    resources :addresses, :only => [:create, :index, :show]
     
-    resources :users do
-      resources :addresses, :only => [:show]
-    end
   end
+  
+  post "/api/users/login", :to => "api/users#login"
   
 end

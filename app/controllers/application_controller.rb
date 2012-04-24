@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
+  rescue_from(CustomException::AccessDenied) do
+    render_error("Access Denied")
+  end
+  
   def parse_body
     request_body = request.body.read
     if request_body.empty?
@@ -20,8 +24,8 @@ class ApplicationController < ActionController::Base
     request.format = :json
   end
   
-  def render_error(msg, status)
-    render(:json => {:message => msg}, :status => status) and return
+  def render_error(msg)
+    render(:json => {:message => msg}) and return
   end
   
 end

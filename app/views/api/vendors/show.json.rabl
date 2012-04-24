@@ -1,6 +1,6 @@
 object(@vendor)
 
-attributes :name, :description
+attributes :name, :description, :id
 node(:created_at) do |c|
   c.created_at.to_i
 end
