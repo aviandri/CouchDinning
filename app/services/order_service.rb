@@ -2,7 +2,7 @@ class OrderService
   class << self
   
     def create(user, items_json)
-      if !user || !item_ids
+      if !user || !items_json
         raise CustomException::InternalServerError
       end
       items = []
