@@ -1,32 +1,34 @@
-<%= form_for @vendor, :html => { :multipart => true } do |f| %>
-  <% if @vendor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@vendor.errors.count, "error") %> prohibited this vendor from being saved:</h2>
-
-      <ul>
-      <% @vendor.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @vendor, :html => { :class => 'form-horizontal', :multipart => true } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => 'text_area' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :logo %><br />
-    <%= file_field(:vendor, :logo_image) %>
+
+  <div class="control-group">
+    <%= f.label :vendor_logo, :class => 'control-label' %>
+    <div class="controls">
+		<%= file_field(:vendor, :logo_image) %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :dashboard %><br />
-    <%= file_field(:vendor, :dashboard_image) %>
+
+  <div class="control-group">
+    <%= f.label :vendor_dashboard, :class => 'control-label' %>
+    <div class="controls">
+		<%= file_field(:vendor, :dashboard_image) %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                vendors_path, :class => 'btn' %>
   </div>
 <% end %>

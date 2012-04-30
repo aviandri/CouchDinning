@@ -42,3 +42,7 @@ gem 'devise'
 gem "paperclip", "~> 3.0"
 gem 'rabl'
 gem 'yajl-ruby', require: 'yajl'
+
+group :assets do
+  gem 'twitter-bootstrap-rails'
+end

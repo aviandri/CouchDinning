@@ -1,28 +1,10 @@
 class OrderService
   class << self
-    # def create(user, item_ids)
-    #      if !user || !item_ids
-    #        raise CustomException::InternalServerError
-    #      end
-    #      item_ids = item_ids.uniq
-    #      #make sure item in an order comes from the same vendor
-    #      items = []
-    #      first_item = Item.find(item_ids.shift)
-    #      items << first_item
-    #      total_price = 0
-    #      item_ids.each do |id|
-    #        i = Item.find(id)
-    #        if i.vendor_id != first_item.vendor_id
-    #          raise CustomException::DifferentVendorOrder
-    #        end
-    #        items << i
-    #        total_price += i.price
-    #      end
-    #      order_param = {:items => items, :total_price => total_price, :user_id => user.id}
-    #      @order = Order.create(order_param)
-    #    end
-    
+  
     def create(user, items_json)
+      if !user || !item_ids
+        raise CustomException::InternalServerError
+      end
       items = []
       total_price = 0
       vendor_id = nil
@@ -38,8 +20,22 @@ class OrderService
           total_price += i.price
         }
       }
-      order_param = {:items => items, :total_price => total_price, :user_id => user.id}
+      order_param = {:items => items, :total_price => total_price, :user_id => user.id, :status => 1}
       @order = Order.create(order_param)
+    end
+    
+    def checkout(order_ids)
+      if !order_ids
+        raise CustomException::InternalServerError
+      end
+      
+      Order.transaction do
+        order_ids.each{|id|
+          order = Order.find(id)
+          order.status = Order::STATUS_PROCESSED  
+          order.save
+        }
+      end
     end
   end
 end

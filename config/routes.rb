@@ -18,10 +18,11 @@ CouchDinning::Application.routes.draw do
     end
     resources :addresses, :only => [:create, :index, :show]
     
-    resources :orders, :only => [:create]
+    resources :orders, :only => [:create, :index, :show]
     
   end
   
   post "/api/users/login", :to => "api/users#login"
+  post "/api/orders/checkout", :to => "api/orders#checkout"
   
 end
