@@ -4,9 +4,6 @@ class Api::OrdersController < ApplicationController
   
   def create
     items = parsed_body
-    p "*****"
-    p items
-    
     OrderService.create(current_user, items)
     head(:no_content)
   end

@@ -1,4 +1,6 @@
 class VendorsController < ApplicationController
+  before_filter :authenticate_user!
+  
   # GET /vendors
   # GET /vendors.json
   def index
