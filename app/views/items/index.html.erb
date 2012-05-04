@@ -1,33 +1,25 @@
 <h1>Listing items</h1>
 
-<table>
-  <tr>
-	<th>ID</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Price</th>
-    <th>Avatar</th>
-    <th>Vendor</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div>
+	<p>
+		<%= link_to "+New",
+		            new_item_path,
+		            :class => 'btn btn-success btn-large' %>
+	</p>
+</div>
+<ul class="thumbnails">
+	<% @items.each do |item| %>
+	
+	<li class="span4">
+    	<div href="#" class="thumbnail">			
+			<%= image_tag(item.avatar(:medium))%>
+			<h4><%= item.name %></h4>
+			<p><%= item.description %></p>
+			<p>
+				<a href="#" class="btn btn-primary">Order</a>
+			</p>
+	    </div>
+	</li>
+	<% end %>
+</ul>
 
-<% @items.each do |item| %>
-  <tr>
-	<td><%= item.id %></td>
-    <td><%= item.name %></td>
-    <td><%= item.description %></td>
-    <td><%= item.price %></td>
-    <td><%= item.avatar %></td>
-    <td><%= item.vendor_id %></td>
-    <td><%= link_to 'Show', item %></td>
-    <td><%= link_to 'Edit', edit_item_path(item) %></td>
-    <td><%= link_to 'Destroy', item, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Item', new_item_path %>

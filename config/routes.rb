@@ -28,5 +28,5 @@ CouchDinning::Application.routes.draw do
   end
   
     
-  root :to => 'home#index'
+  root :to => 'vendors#list'
 end

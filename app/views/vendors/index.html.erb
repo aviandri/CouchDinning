@@ -14,7 +14,7 @@
 			<h4><%= vendor.name %></h4>
 			<p><%= vendor.description %></p>
 			<p>
-				<a href="#" class="btn btn-primary">See menu</a>
+				<%= link_to "See Menu", vendor_items_path(vendor.id), :class => "btn btn-primary" %>
 			</p>
 	    </div>
 	</li>
