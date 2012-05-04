@@ -16,10 +16,47 @@
 			<h4><%= item.name %></h4>
 			<p><%= item.description %></p>
 			<p>
-				<a href="#" class="btn btn-primary">Order</a>
+				<%= link_to "Order", api_vendor_item_path(item.vendor_id, item.id), :remote => true, :class => "btn btn-primary menu-item" %>
 			</p>
 	    </div>
 	</li>
 	<% end %>
 </ul>
+
+<div class="modal hide fade" id="myModal">
+  <div class="modal-header">
+    <button class="close" data-dismiss="modal">×</button>
+    <h3>Modal header</h3>
+  </div>
+  <div class="modal-body">
+	<ul class="thumbnails">
+		<li class="span4">
+			<div href="#" class="thumbnail" id="item-img">			
+				<img alt="Missing" src="/system/1ec2ffe87567cb088c2c93a13032fd2990519bee.png?1335264781">
+			</div>
+		</li>
+	</ul>
+	<h4>Big Mac</h4>
+	<p>Desccription</p>
+	
+  </div>
+
+  <div class="modal-footer">
+	<a href="/api/vendors/1/items/9" class="btn btn-primary menu-item" data-remote="true">+Add to cart</a>
+  </div>
+</div>
+
+
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$(".menu-item").live("ajax:success", function(e, data, status, xhr){
+			$("#item-img img").attr("src", data.avatar_url.medium);
+			$(".modal-body").append("<h4>"+data.name+"</h4>");
+			$(".modal-body").append("<p>"+data.description+"</p>");
+			$('#myModal').modal('show')
+		});		
+	});
+	
+</script>
 
