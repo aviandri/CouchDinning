@@ -10,6 +10,8 @@ CouchDinning::Application.routes.draw do
     resources :items, :only => [:index, :show, :destroy]
   end
   
+  get "/vendors/list", :to => "vendors#list"
+
   resources :tokens,:only => [:create, :destroy]
   
   namespace :api do
@@ -20,9 +22,11 @@ CouchDinning::Application.routes.draw do
     
     resources :orders, :only => [:create, :index, :show]
     
+    post "/users/login", :to => "users#login"
+
+    post "/orders/checkout", :to => "orders#checkout"
   end
   
-  post "/api/users/login", :to => "api/users#login"
-  post "/api/orders/checkout", :to => "api/orders#checkout"
-  
+    
+  root :to => 'home#index'
 end

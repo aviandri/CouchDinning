@@ -9,46 +9,37 @@
 <body>
 
 <div class="container">
-<div class="row">	
-	<div class="span12"><%= yield %> </div>
-</div>
+	<div class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+	   	<div class="container">
+	      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </a>
+	      <a class="brand" href="#">DelivEat</a>
+		<%= user_account_menu %>
+	      <div class="nav-collapse">
+	        <ul class="nav">
+	          <li><%= link_to "Home" %></li>
+	          <li><%= link_to "About Us" %></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<div class="row page-content">	
+		<div class="span12">
+			<%=yield %>
+		</div>
+	</div>
+
+	<div class="footer">
+		<p>@Deliveat 2011<p>
+	</div>
 </div>
 
-<div class="navbar navbar-fixed-top">
-	<div class="navbar-inner">
-   	<div class="container">
-      <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-      <a class="brand" href="#">DelivEat</a>
-	  <!-- <div class="btn-group pull-right">
-  		<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-           <i class="icon-user"></i> <%= user_signed_in? %>
-           <span class="caret"></span>
-         </a>
-		<ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li class="divider"></li>
-          <li><%= link_to(t(:signout, :default => "Sign out"), destroy_user_session_path, :method => :delete) %></li>
-        </ul>	
-	  </div> -->
-	 <!-- <div class="nav-collapse pull-right">
-       <ul class="nav">
-         <li><%= link_to "Sign in" %></li>
-       </ul>
-     </div> -->
-	<%= user_account_menu %>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li><%= link_to "Home" %></li>
-          <li><%= link_to "About Us" %></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
 
 </body>
 </html>
