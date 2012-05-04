@@ -7,13 +7,8 @@ class OrderService
       end
       items = []
       total_price = 0
-      vendor_id = nil
       items_json.each{|item|
         i = Item.find(item[:item_id].to_i)
-        vendor_id = vendor_id ? vendor_id : i.vendor_id
-        if vendor_id != i.vendor_id
-          raise CustomException::DifferentVendorOrder
-        end
         q = item[:quantity].to_i
         q.times {
           items << i
