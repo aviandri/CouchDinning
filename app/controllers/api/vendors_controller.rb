@@ -10,5 +10,10 @@ class Api::VendorsController < ApplicationController
   def show
     @vendor = Vendor.find(params[:id])
   end
+  
+  def featured
+    @vendors = Vendor.find_featured
+    render :template => "/api/vendors/index" 
+  end
 
 end

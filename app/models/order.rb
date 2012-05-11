@@ -16,7 +16,7 @@ class Order < ActiveRecord::Base
   end
   
   def self.find_by_user_id(user_id)
-    Order.where(:user_id => user_id)
+    Order.where(:featured => true)
   end
   
 end

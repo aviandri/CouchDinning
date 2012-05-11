@@ -13,4 +13,9 @@ class Vendor < ActiveRecord::Base
                       :path => ":rails_root/public/system/dashboard/:id/:style/:basename.:extension"
                     }
   has_many :items
+  
+  def self.find_featured
+    Vendor.where(:featured => true)
+  end
+  
 end

@@ -16,6 +16,9 @@ CouchDinning::Application.routes.draw do
   
   namespace :api do
     resources :vendors, :only => [:index, :show] do
+      collection do
+        get :featured
+      end
       resources :items, :only => [:index, :show]
     end
     resources :addresses, :only => [:create, :index, :show]
