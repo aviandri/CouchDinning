@@ -8,7 +8,7 @@ class Vendor < ActiveRecord::Base
                     
   has_attached_file :dashboard_image,
                     {
-                      :styles => { :medium => "300x300>", :thumb => "100x100>" }, 
+                      :styles => { :medium => "300x120>", :thumb => "145x60>" }, 
                       :url => "/system/dashboard/:id/:style/:basename.:extension",  
                       :path => ":rails_root/public/system/dashboard/:id/:style/:basename.:extension"
                     }
